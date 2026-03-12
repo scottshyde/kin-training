@@ -1,0 +1,38 @@
+{
+  "title": "Builder Playbook",
+  "description": "Build your team and scale your business. Training, norms, and growth strategies.",
+  "icon": "Hammer",
+  "order": 2,
+  "sections": {
+    "sales-training": {
+      "title": "Sales Training",
+      "description": "Core sales training modules",
+      "order": 1
+    },
+    "team-norms": {
+      "title": "Team Norms",
+      "description": "Team culture and expectations",
+      "order": 2
+    },
+    "mindset": {
+      "title": "Mindset",
+      "description": "Winning mindset and motivation",
+      "order": 3
+    },
+    "solar-education": {
+      "title": "Solar Education",
+      "description": "Solar industry knowledge",
+      "order": 4
+    },
+    "digital-domination": {
+      "title": "Digital Domination",
+      "description": "Digital marketing and online presence",
+      "order": 5
+    },
+    "hvac": {
+      "title": "HVAC",
+      "description": "HVAC cross-selling opportunities",
+      "order": 6
+    }
+  }
+}

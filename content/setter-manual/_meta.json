@@ -1,0 +1,28 @@
+{
+  "title": "Setter Manual",
+  "description": "Master the setter role. From door knocking to booking quality appointments.",
+  "icon": "UserCheck",
+  "order": 3,
+  "sections": {
+    "team-norms": {
+      "title": "Team Norms",
+      "description": "Setter team culture and expectations",
+      "order": 1
+    },
+    "sales-training": {
+      "title": "Sales Training",
+      "description": "Griffin Hill methodology and setter skills",
+      "order": 2
+    },
+    "bootcamp": {
+      "title": "Bootcamp",
+      "description": "New setter onboarding and training",
+      "order": 3
+    },
+    "solar-education": {
+      "title": "Solar Education",
+      "description": "Solar knowledge for setters",
+      "order": 4
+    }
+  }
+}

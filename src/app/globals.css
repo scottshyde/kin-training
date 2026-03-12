@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+}
+
+:root {
+  --font-playfair: 'Playfair Display', serif;
+  --font-inter: 'Inter', sans-serif;
+  --color-kin-green: #006039;
+  --color-kin-gold: #C5A258;
+  --color-kin-black: #0D1117;
+  --color-kin-cream: #F5F0E8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair);
+  font-weight: 700;
+  color: var(--color-kin-black);
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin: 2rem 0 1rem;
+}
+
+h2 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  margin: 1.5rem 0 0.75rem;
+}
+
+h3 {
+  font-size: 1.875rem;
+  line-height: 1.2;
+  margin: 1.25rem 0 0.5rem;
+}
+
+p {
+  margin: 1rem 0;
+  line-height: 1.8;
+}
+
+a {
+  color: var(--color-kin-green);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-kin-gold);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-kin-green);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-kin-gold);
+}
+
+/* Smooth transitions */
+button,
+a {
+  transition: all 0.2s ease;
+}
+
+/* Card shadows */
+.card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}

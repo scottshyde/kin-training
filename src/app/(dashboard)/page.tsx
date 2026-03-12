@@ -17,7 +17,7 @@ export default async function DashboardPage() {
       <div className="bg-gradient-to-r from-kin-black to-kin-green text-white px-6 md:px-12 py-16">
         <div className="max-w-6xl mx-auto">
           <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-4">
-            Welcome to KIN Solar Training
+            Welcome to KIN Home Training
           </h1>
           <p className="text-kin-cream text-lg md:text-xl max-w-2xl">
             Master the Griffin Hill sales system. Everything you need to excel in sales,

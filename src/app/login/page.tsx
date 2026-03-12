@@ -72,7 +72,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@kinsolar.com"
+                placeholder="you@kinhome.com"
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-kin-green focus:outline-none transition"
                 required
               />
@@ -109,10 +109,10 @@ export default function LoginPage() {
             <p className="text-sm text-gray-600 mb-3 font-medium">Demo Credentials:</p>
             <div className="space-y-2 text-sm text-gray-600">
               <div>
-                <p className="font-mono bg-gray-100 p-2 rounded">admin@kinsolar.com</p>
+                <p className="font-mono bg-gray-100 p-2 rounded">admin@kinhome.com</p>
               </div>
               <div>
-                <p className="font-mono bg-gray-100 p-2 rounded">rep@kinsolar.com</p>
+                <p className="font-mono bg-gray-100 p-2 rounded">rep@kinhome.com</p>
               </div>
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function LoginPage() {
 
         {/* Footer */}
         <p className="text-center text-gray-400 text-xs mt-8">
-          KIN Solar © 2024. All rights reserved.
+          KIN Home © 2024. All rights reserved.
         </p>
       </div>
     </div>

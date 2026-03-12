@@ -5,8 +5,8 @@ import "./globals.css";
 // Fonts will be loaded via CSS imports in globals.css
 
 export const metadata: Metadata = {
-  title: "KIN Solar Training Portal",
-  description: "Sales training portal for KIN Solar - Closer Manual, Builder Playbook, Setter Manual",
+  title: "KIN Home Training Portal",
+  description: "Sales training portal for KIN Home - Closer Manual, Builder Playbook, Setter Manual",
 };
 
 export default function RootLayout({

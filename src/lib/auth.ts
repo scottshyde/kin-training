@@ -4,8 +4,8 @@ import type { JWT } from 'next-auth/jwt';
 
 // Define users - can be moved to environment variables
 const VALID_USERS = [
-  { email: 'admin@kinsolar.com', password: 'kinsolar2024' },
-  { email: 'rep@kinsolar.com', password: 'trainme' },
+  { email: 'admin@kinhome.com', password: 'kinhome2024' },
+  { email: 'rep@kinhome.com', password: 'trainme' },
 ];
 
 export const authOptions: NextAuthOptions = {

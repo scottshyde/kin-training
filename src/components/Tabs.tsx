@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type ReactNode, Children } from 'react';
+import { useState, type ReactNode, Children, isValidElement } from 'react';
 
 interface TabsProps {
   labels: string[];
@@ -9,7 +9,11 @@ interface TabsProps {
 
 export function Tabs({ labels, children }: TabsProps) {
   const [active, setActive] = useState(0);
-  const panels = Children.toArray(children);
+
+  // Filter to only valid Tab elements (skip whitespace text nodes from MDX)
+  const panels = Children.toArray(children).filter(
+    (child) => isValidElement(child)
+  );
 
   return (
     <div className="my-6">

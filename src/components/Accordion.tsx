@@ -18,6 +18,7 @@ export default function Accordion({ title, children }: AccordionProps) {
     >
       <button
         onClick={() => setOpen(!open)}
+        type="button"
         className="w-full flex items-center gap-3 px-5 py-4 text-left transition hover:bg-gray-50"
         style={{ background: open ? '#FAFAF7' : 'white' }}
       >
@@ -35,7 +36,7 @@ export default function Accordion({ title, children }: AccordionProps) {
       </button>
       {open && (
         <div
-          className="px-5 pb-5 pt-1 text-sm leading-relaxed text-gray-700"
+          className="px-5 pb-5 pt-1 text-sm leading-relaxed text-gray-700 prose-kin"
           style={{ borderTop: '1px solid #e5e1d8' }}
         >
           {children}

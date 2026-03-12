@@ -10,13 +10,13 @@ interface TabsProps {
 export function Tabs({ labels, children }: TabsProps) {
   const [active, setActive] = useState(0);
 
-  // Filter to only valid Tab elements (skip whitespace text nodes from MDX)
+  // Filter to only valid elements (skip whitespace text nodes from MDX)
   const panels = Children.toArray(children).filter(
     (child) => isValidElement(child)
   );
 
   return (
-    <div className="my-6">
+    <div className="my-6" suppressHydrationWarning>
       {/* Tab bar */}
       <div className="flex gap-0 overflow-x-auto" style={{ borderBottom: '2px solid #e5e1d8' }}>
         {labels.map((label, i) => (
@@ -34,14 +34,16 @@ export function Tabs({ labels, children }: TabsProps) {
           </button>
         ))}
       </div>
-      {/* Active panel */}
-      <div className="pt-4">
-        {panels[active] ?? null}
-      </div>
+      {/* Panels — render all but only show active */}
+      {panels.map((panel, i) => (
+        <div key={i} style={{ display: active === i ? 'block' : 'none' }} className="pt-4" suppressHydrationWarning>
+          {panel}
+        </div>
+      ))}
     </div>
   );
 }
 
 export function Tab({ children }: { children: ReactNode }) {
-  return <div>{children}</div>;
+  return <div suppressHydrationWarning>{children}</div>;
 }

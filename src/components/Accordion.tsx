@@ -15,6 +15,7 @@ export default function Accordion({ title, children }: AccordionProps) {
     <div
       className="my-4 rounded-lg overflow-hidden"
       style={{ border: '1px solid #e5e1d8' }}
+      suppressHydrationWarning
     >
       <button
         onClick={() => setOpen(!open)}
@@ -34,14 +35,20 @@ export default function Accordion({ title, children }: AccordionProps) {
           {title}
         </span>
       </button>
-      {open && (
-        <div
-          className="px-5 pb-5 pt-1 text-sm leading-relaxed text-gray-700 prose-kin"
-          style={{ borderTop: '1px solid #e5e1d8' }}
-        >
-          {children}
-        </div>
-      )}
+      <div
+        className="prose-kin"
+        style={{
+          borderTop: open ? '1px solid #e5e1d8' : 'none',
+          display: open ? 'block' : 'none',
+          padding: open ? '4px 20px 20px' : '0 20px',
+          fontSize: '14px',
+          lineHeight: '1.7',
+          color: '#374151',
+        }}
+        suppressHydrationWarning
+      >
+        {children}
+      </div>
     </div>
   );
 }

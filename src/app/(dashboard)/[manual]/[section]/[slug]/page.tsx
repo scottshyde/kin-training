@@ -2,7 +2,15 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import Accordion from '@/components/Accordion';
+import { Tabs, Tab } from '@/components/Tabs';
 import { getManuals, getSections, getArticles, getArticle } from '@/lib/content';
+
+const mdxComponents = {
+  Accordion,
+  Tabs,
+  Tab,
+};
 
 interface Props {
   params: Promise<{ manual: string; section: string; slug: string }>;
@@ -83,7 +91,7 @@ export default async function ArticlePage({ params }: Props) {
       <div className="max-w-4xl mx-auto px-6 md:px-12 py-10">
         {/* Article Content */}
         <article className="bg-white rounded-xl p-8 md:p-12 mb-12 border border-[#e5e1d8] prose-kin" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
-          <MDXRemote source={article.content} />
+          <MDXRemote source={article.content} components={mdxComponents} />
         </article>
 
         {/* Navigation */}

@@ -25,7 +25,6 @@ export default async function ManualPage({ params }: Props) {
 
   const sections = await getSections(manualSlug);
 
-  // Fetch article counts for each section
   const sectionData = await Promise.all(
     sections.map(async (section) => {
       const articles = await getArticles(manualSlug, section.slug);
@@ -37,43 +36,49 @@ export default async function ManualPage({ params }: Props) {
   );
 
   return (
-    <div className="bg-kin-cream min-h-screen px-6 md:px-12 py-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Breadcrumbs */}
-        <Breadcrumbs items={[{ label: manual.title, href: `/${manualSlug}` }]} />
-
-        {/* Header */}
-        <div className="mb-12">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold text-kin-black mb-4">
+    <div className="min-h-screen bg-kin-cream">
+      {/* Dark hero */}
+      <div className="hero-gradient text-white px-6 md:px-12 py-12 md:py-16">
+        <div className="max-w-6xl mx-auto">
+          <Breadcrumbs items={[{ label: manual.title, href: `/${manualSlug}` }]} dark />
+          <h1 style={{ fontFamily: "'Playfair Display', serif" }} className="text-4xl md:text-5xl font-bold text-white mb-3">
             {manual.title}
           </h1>
-          <p className="text-gray-700 text-lg max-w-2xl">
+          <p className="text-gray-300 text-lg max-w-2xl">
             {manual.description}
           </p>
         </div>
+      </div>
 
-        {/* Sections Grid */}
+      {/* Sections Grid */}
+      <div className="max-w-6xl mx-auto px-6 md:px-12 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {sectionData.map((section) => (
+          {sectionData.map((section, index) => (
             <Link
               key={section.slug}
               href={`/${manualSlug}/${section.slug}`}
-              className="group card bg-white rounded-lg p-6 hover:shadow-lg transition"
+              className="group card-premium flex gap-5 p-6"
             >
-              <h3 className="font-playfair text-xl font-bold text-kin-black mb-2 group-hover:text-kin-gold transition">
-                {section.title}
-              </h3>
-              <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                {section.description}
-              </p>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-gray-500">
-                  {section.articleCount} {section.articleCount === 1 ? 'article' : 'articles'}
-                </span>
-                <ArrowRight
-                  size={18}
-                  className="text-kin-gold group-hover:translate-x-1 transition-transform"
-                />
+              {/* Number badge */}
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-kin-green flex items-center justify-center text-white text-sm font-bold">
+                {index + 1}
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 style={{ fontFamily: "'Playfair Display', serif" }} className="text-lg font-bold text-kin-black mb-1 group-hover:text-kin-gold transition">
+                  {section.title}
+                </h3>
+                <p className="text-gray-500 text-sm mb-3 line-clamp-2 leading-relaxed">
+                  {section.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                    {section.articleCount} {section.articleCount === 1 ? 'article' : 'articles'}
+                  </span>
+                  <ArrowRight
+                    size={16}
+                    className="text-kin-gold group-hover:translate-x-1 transition-transform"
+                  />
+                </div>
               </div>
             </Link>
           ))}

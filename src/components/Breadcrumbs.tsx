@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Home } from 'lucide-react';
 
 interface Breadcrumb {
   label: string;
@@ -10,21 +10,27 @@ interface Breadcrumb {
 
 interface BreadcrumbsProps {
   items: Breadcrumb[];
+  dark?: boolean;
 }
 
-export default function Breadcrumbs({ items }: BreadcrumbsProps) {
+export default function Breadcrumbs({ items, dark = false }: BreadcrumbsProps) {
+  const baseText = dark ? 'text-gray-400' : 'text-gray-500';
+  const linkText = dark ? 'text-kin-gold/70 hover:text-kin-gold' : 'text-kin-green hover:text-kin-gold';
+  const activeText = dark ? 'text-gray-300' : 'text-gray-700';
+  const chevronColor = dark ? 'text-gray-600' : 'text-gray-400';
+
   return (
-    <nav className="flex items-center gap-2 text-sm mb-8 text-gray-600">
-      <Link href="/" className="text-kin-green hover:text-kin-gold font-medium">
-        Home
+    <nav className={`flex items-center gap-2 text-sm mb-6 ${baseText}`}>
+      <Link href="/" className={`${linkText} transition`}>
+        <Home size={14} />
       </Link>
       {items.map((item, index) => (
         <div key={item.href} className="flex items-center gap-2">
-          <ChevronRight size={16} className="text-gray-400" />
+          <ChevronRight size={14} className={chevronColor} />
           {index === items.length - 1 ? (
-            <span className="text-gray-900 font-medium">{item.label}</span>
+            <span className={`font-medium ${activeText}`}>{item.label}</span>
           ) : (
-            <Link href={item.href} className="text-kin-green hover:text-kin-gold font-medium">
+            <Link href={item.href} className={`${linkText} font-medium transition`}>
               {item.label}
             </Link>
           )}

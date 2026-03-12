@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, FileText } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { getManuals, getSections, getArticles } from '@/lib/content';
 
@@ -38,57 +38,61 @@ export default async function SectionPage({ params }: Props) {
   const articles = await getArticles(manualSlug, sectionSlug);
 
   return (
-    <div className="bg-kin-cream min-h-screen px-6 md:px-12 py-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Breadcrumbs */}
-        <Breadcrumbs
-          items={[
-            { label: manual.title, href: `/${manualSlug}` },
-            { label: section.title, href: `/${manualSlug}/${sectionSlug}` },
-          ]}
-        />
-
-        {/* Header */}
-        <div className="mb-12">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold text-kin-black mb-4">
+    <div className="min-h-screen bg-kin-cream">
+      {/* Dark hero */}
+      <div className="hero-gradient text-white px-6 md:px-12 py-12 md:py-16">
+        <div className="max-w-6xl mx-auto">
+          <Breadcrumbs
+            items={[
+              { label: manual.title, href: `/${manualSlug}` },
+              { label: section.title, href: `/${manualSlug}/${sectionSlug}` },
+            ]}
+            dark
+          />
+          <h1 style={{ fontFamily: "'Playfair Display', serif" }} className="text-4xl md:text-5xl font-bold text-white mb-3">
             {section.title}
           </h1>
-          <p className="text-gray-700 text-lg">
+          <p className="text-gray-300 text-lg">
             {section.description}
           </p>
         </div>
+      </div>
 
-        {/* Articles List */}
+      {/* Articles List */}
+      <div className="max-w-6xl mx-auto px-6 md:px-12 py-12">
         {articles.length > 0 ? (
           <div className="space-y-4">
             {articles.map((article) => (
               <Link
                 key={article.slug}
                 href={`/${manualSlug}/${sectionSlug}/${article.slug}`}
-                className="group card block bg-white rounded-lg p-6 hover:shadow-lg transition border-l-4 border-transparent hover:border-kin-gold"
+                className="group card-article block p-6"
               >
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <h3 className="font-playfair text-xl font-bold text-kin-black mb-2 group-hover:text-kin-gold transition">
-                      {article.title}
-                    </h3>
-                    {article.description && (
-                      <p className="text-gray-600 text-sm line-clamp-2">
-                        {article.description}
-                      </p>
-                    )}
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start gap-4 flex-1 min-w-0">
+                    <FileText size={20} className="text-kin-gold flex-shrink-0 mt-0.5" />
+                    <div className="flex-1 min-w-0">
+                      <h3 style={{ fontFamily: "'Playfair Display', serif" }} className="text-lg font-bold text-kin-black mb-1 group-hover:text-kin-gold transition">
+                        {article.title}
+                      </h3>
+                      {article.description && (
+                        <p className="text-gray-500 text-sm line-clamp-2 leading-relaxed">
+                          {article.description}
+                        </p>
+                      )}
+                    </div>
                   </div>
                   <ArrowRight
-                    size={20}
-                    className="text-kin-gold group-hover:translate-x-1 transition-transform ml-4 flex-shrink-0 mt-1"
+                    size={18}
+                    className="text-kin-gold group-hover:translate-x-1 transition-transform flex-shrink-0 mt-1"
                   />
                 </div>
               </Link>
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-lg p-12 text-center">
-            <p className="text-gray-500 text-lg">No articles in this section yet.</p>
+          <div className="bg-white rounded-xl p-12 text-center border border-[#e5e1d8]">
+            <p className="text-gray-400">No articles in this section yet.</p>
           </div>
         )}
       </div>

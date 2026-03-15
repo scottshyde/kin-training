@@ -2,7 +2,7 @@
   "title": "Setter Manual",
   "description": "Master the setter role. From door knocking to booking quality appointments.",
   "icon": "UserCheck",
-  "order": 3,
+  "order": 1,
   "sections": {
     "team-norms": {
       "title": "Team Norms",

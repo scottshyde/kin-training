@@ -1,0 +1,68 @@
+{
+  "title": "Closer Manual",
+  "description": "Everything you need to close deals effectively. From solution presentations to handling objections.",
+  "icon": "BookOpen",
+  "order": 2,
+  "sections": {
+    "solution-presentation": {
+      "title": "Solution Presentation",
+      "description": "Master the art of presenting solar solutions",
+      "order": 1
+    },
+    "lender-guide": {
+      "title": "Lender Guide",
+      "description": "Financing options and lender information",
+      "order": 2
+    },
+    "kin-installs": {
+      "title": "KIN Installs",
+      "description": "Installation processes and procedures",
+      "order": 3
+    },
+    "equipment": {
+      "title": "Equipment",
+      "description": "Solar equipment knowledge and specs",
+      "order": 4
+    },
+    "mpu-rma-timelines": {
+      "title": "MPU/RMA Timelines",
+      "description": "Timeline management for MPU and RMA",
+      "order": 5
+    },
+    "roofing": {
+      "title": "Roofing",
+      "description": "Roofing assessment and requirements",
+      "order": 6
+    },
+    "competitor-analysis": {
+      "title": "Competitor Analysis",
+      "description": "Know your competition inside and out",
+      "order": 7
+    },
+    "reviews": {
+      "title": "Reviews",
+      "description": "Customer reviews and social proof",
+      "order": 8
+    },
+    "proof-plays": {
+      "title": "Proof Plays",
+      "description": "Proof points and case studies",
+      "order": 9
+    },
+    "operations": {
+      "title": "Operations",
+      "description": "Operational procedures and workflows",
+      "order": 10
+    },
+    "managing-jobs": {
+      "title": "Managing Jobs",
+      "description": "Job management best practices",
+      "order": 11
+    },
+    "articles": {
+      "title": "Articles",
+      "description": "Industry articles and resources",
+      "order": 12
+    }
+  }
+}

@@ -34,14 +34,14 @@ export default async function DashboardPage() {
         {/* Start Here Banner */}
         <div className="bg-white rounded-xl p-6 mb-12 border border-[#e5e1d8]" style={{ borderLeft: '4px solid var(--color-kin-gold)', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
           <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-2xl font-bold text-kin-black mb-2">
-            Start Here: Closer Manual
+            Start Here: Setter Manual
           </h2>
           <p className="text-gray-600 mb-4">
-            New to the team? Start with the Closer Manual to understand
-            the foundation of our sales process.
+            New to the team? Start with the Setter Manual — learn the Case Open, Needs Audit,
+            and the mindset that gets you setting quality appointments from day one.
           </p>
           <Link
-            href="/closer-manual"
+            href="/setter-manual"
             className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-lg transition hover:opacity-90"
             style={{ background: 'linear-gradient(135deg, #006039, #007a49)' }}
           >

@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import { DoorOpen, Handshake, HardHat, Crown } from 'lucide-react';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import { scenarios } from '@/lib/scenarios';
+import { canAccessManual } from '@/lib/roles';
 import HomeNav from '@/components/HomeNav';
 import ScenarioVideo from '@/components/ScenarioVideo';
 
@@ -21,7 +24,15 @@ const scenarioVideos: Record<string, string> = {
   'building-your-empire': '/building-your-empire.mp4',
 };
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const session = await getServerSession(authOptions);
+  const role = session?.user?.role;
+
+  // Filter scenarios: only show if user can access at least one article
+  const visibleScenarios = scenarios.filter((s) =>
+    s.articles.some((a) => canAccessManual(role, a.manual))
+  );
+
   return (
     <div style={{ backgroundColor: '#0D1117' }}>
       {/* Floating nav */}
@@ -80,7 +91,7 @@ export default function DashboardPage() {
       </section>
 
       {/* ===== SCENARIO SECTIONS ===== */}
-      {scenarios.map((scenario, i) => {
+      {visibleScenarios.map((scenario, i) => {
         const isEven = i % 2 === 0;
         return (
           <section

@@ -2,12 +2,27 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { X, LogOut } from 'lucide-react';
 import { scenarios } from '@/lib/scenarios';
+import { getAllowedManuals, canAccessManual } from '@/lib/roles';
+
+const manualLinks = [
+  { slug: 'setter-manual', label: 'Setter Manual' },
+  { slug: 'closer-manual', label: 'Closer Manual' },
+  { slug: 'builder-playbook', label: 'Builder Playbook' },
+];
 
 export default function HomeNav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { data: session } = useSession();
+  const role = session?.user?.role;
+  const allowed = getAllowedManuals(role);
+
+  // Filter scenarios: only show if user can access at least one article in it
+  const visibleScenarios = scenarios.filter((scenario) =>
+    scenario.articles.some((a) => canAccessManual(role, a.manual))
+  );
 
   return (
     <>
@@ -51,7 +66,7 @@ export default function HomeNav() {
                 Go To
               </p>
               <div className="space-y-6 mb-16">
-                {scenarios.map((scenario) => (
+                {visibleScenarios.map((scenario) => (
                   <Link
                     key={scenario.slug}
                     href={`/scenario/${scenario.slug}`}
@@ -71,29 +86,20 @@ export default function HomeNav() {
               {/* Divider */}
               <div className="h-px bg-white/5 mb-8" />
 
-              {/* Secondary links */}
+              {/* Secondary links — only show manuals user can access */}
               <div className="space-y-4">
-                <Link
-                  href="/setter-manual"
-                  onClick={() => setMenuOpen(false)}
-                  className="block text-white/25 text-sm hover:text-white/50 transition-colors"
-                >
-                  Setter Manual
-                </Link>
-                <Link
-                  href="/closer-manual"
-                  onClick={() => setMenuOpen(false)}
-                  className="block text-white/25 text-sm hover:text-white/50 transition-colors"
-                >
-                  Closer Manual
-                </Link>
-                <Link
-                  href="/builder-playbook"
-                  onClick={() => setMenuOpen(false)}
-                  className="block text-white/25 text-sm hover:text-white/50 transition-colors"
-                >
-                  Builder Playbook
-                </Link>
+                {manualLinks
+                  .filter((m) => allowed.includes(m.slug))
+                  .map((m) => (
+                    <Link
+                      key={m.slug}
+                      href={`/${m.slug}`}
+                      onClick={() => setMenuOpen(false)}
+                      className="block text-white/25 text-sm hover:text-white/50 transition-colors"
+                    >
+                      {m.label}
+                    </Link>
+                  ))}
               </div>
 
               {/* Sign out */}

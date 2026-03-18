@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import { ArrowLeft, DoorOpen, Handshake, HardHat, Crown } from 'lucide-react';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import { scenarios, getScenarioBySlug } from '@/lib/scenarios';
+import { canAccessManual } from '@/lib/roles';
 import { getArticle } from '@/lib/content';
 import HomeNav from '@/components/HomeNav';
 
@@ -27,8 +30,16 @@ export default async function ScenarioPage({ params }: Props) {
     return <div style={{ minHeight: '100vh', backgroundColor: '#0D1117', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.3)' }}>Not found</div>;
   }
 
+  const session = await getServerSession(authOptions);
+  const role = session?.user?.role;
+
+  // Filter articles to only those the user can access
+  const accessibleArticles = scenario.articles.filter((ref) =>
+    canAccessManual(role, ref.manual)
+  );
+
   const resolvedArticles = await Promise.all(
-    scenario.articles.map(async (ref) => {
+    accessibleArticles.map(async (ref) => {
       const article = await getArticle(ref.manual, ref.section, ref.slug);
       return {
         ...ref,
@@ -38,9 +49,12 @@ export default async function ScenarioPage({ params }: Props) {
     })
   );
 
-  const idx = scenarios.findIndex((s) => s.slug === slug);
-  const nextScenario = idx < scenarios.length - 1 ? scenarios[idx + 1] : null;
-  const prevScenario = idx > 0 ? scenarios[idx - 1] : null;
+  const visibleScenarios = scenarios.filter((s) =>
+    s.articles.some((a) => canAccessManual(role, a.manual))
+  );
+  const idx = visibleScenarios.findIndex((s) => s.slug === slug);
+  const nextScenario = idx < visibleScenarios.length - 1 ? visibleScenarios[idx + 1] : null;
+  const prevScenario = idx > 0 ? visibleScenarios[idx - 1] : null;
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#0D1117' }}>

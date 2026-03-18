@@ -4,8 +4,9 @@ import type { JWT } from 'next-auth/jwt';
 
 // Define users - can be moved to environment variables
 const VALID_USERS = [
-  { email: 'admin@kinhome.com', password: 'kinhome2024' },
-  { email: 'rep@kinhome.com', password: 'trainme' },
+  { email: 'admin@kinhome.com', password: 'kinhome2024', role: 'admin' },
+  { email: 'rep@kinhome.com', password: 'trainme', role: 'closer' },
+  { email: 'setter@kinhome.com', password: 'buckets', role: 'setter' },
 ];
 
 export const authOptions: NextAuthOptions = {
@@ -30,6 +31,7 @@ export const authOptions: NextAuthOptions = {
             id: user.email,
             email: user.email,
             name: user.email.split('@')[0],
+            role: user.role,
           };
         }
 
@@ -49,12 +51,14 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }: { token: JWT; user?: any }) {
       if (user) {
         token.id = user.id;
+        token.role = user.role;
       }
       return token;
     },
     async session({ session, token }: { session: any; token: JWT }) {
       if (session.user) {
         session.user.id = token.id as string;
+        session.user.role = token.role as string;
       }
       return session;
     },

@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { Manual, Section } from '@/lib/content';
 import { scenarios } from '@/lib/scenarios';
+import { canAccessManual } from '@/lib/roles';
 import SearchModal from './SearchModal';
 
 const scenarioIcons: Record<string, React.ReactNode> = {
@@ -38,11 +39,13 @@ const manualIcons: Record<string, React.ReactNode> = {
 interface SidebarContentProps {
   manuals: Manual[];
   sectionsByManual: Record<string, Section[]>;
+  role?: string;
 }
 
 export default function SidebarContent({
   manuals,
   sectionsByManual,
+  role,
 }: SidebarContentProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedManual, setExpandedManual] = useState<string | null>(null);
@@ -133,7 +136,7 @@ export default function SidebarContent({
             </span>
           </div>
 
-          {scenarios.map((scenario) => (
+          {scenarios.filter((s) => s.articles.some((a) => canAccessManual(role, a.manual))).map((scenario) => (
             <Link
               key={scenario.slug}
               href={`/scenario/${scenario.slug}`}

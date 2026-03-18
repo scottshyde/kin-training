@@ -178,7 +178,7 @@ export default async function DashboardPage() {
             </div>
 
             {/* Divider between sections */}
-            {i < scenarios.length - 1 && (
+            {i < visibleScenarios.length - 1 && (
               <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(197,162,88,0.08), transparent)' }} />
             )}
           </section>

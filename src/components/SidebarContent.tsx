@@ -7,21 +7,32 @@ import { signOut } from 'next-auth/react';
 import {
   Menu,
   X,
-  BookOpen,
-  Hammer,
-  UserCheck,
   LogOut,
   Search,
   ChevronDown,
+  DoorOpen,
+  Handshake,
+  HardHat,
   Crown,
+  BookOpen,
+  Hammer,
+  UserCheck,
 } from 'lucide-react';
 import { Manual, Section } from '@/lib/content';
+import { scenarios } from '@/lib/scenarios';
 import SearchModal from './SearchModal';
 
-const iconMap: Record<string, React.ReactNode> = {
-  BookOpen: <BookOpen size={18} />,
-  Hammer: <Hammer size={18} />,
-  UserCheck: <UserCheck size={18} />,
+const scenarioIcons: Record<string, React.ReactNode> = {
+  DoorOpen: <DoorOpen size={16} strokeWidth={1.5} />,
+  Handshake: <Handshake size={16} strokeWidth={1.5} />,
+  HardHat: <HardHat size={16} strokeWidth={1.5} />,
+  Crown: <Crown size={16} strokeWidth={1.5} />,
+};
+
+const manualIcons: Record<string, React.ReactNode> = {
+  BookOpen: <BookOpen size={16} strokeWidth={1.5} />,
+  Hammer: <Hammer size={16} strokeWidth={1.5} />,
+  UserCheck: <UserCheck size={16} strokeWidth={1.5} />,
 };
 
 interface SidebarContentProps {
@@ -35,6 +46,7 @@ export default function SidebarContent({
 }: SidebarContentProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedManual, setExpandedManual] = useState<string | null>(null);
+  const [showManuals, setShowManuals] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const pathname = usePathname();
 
@@ -49,30 +61,24 @@ export default function SidebarContent({
     for (const manual of manuals) {
       if (isActive(`/${manual.slug}`)) {
         setExpandedManual(manual.slug);
+        setShowManuals(true);
         break;
       }
     }
   }, [pathname]);
 
-  const handleManualClick = (slug: string) => {
-    setExpandedManual(expandedManual === slug ? null : slug);
-  };
-
   return (
     <>
       {/* Mobile menu button */}
-      <div className="md:hidden fixed top-0 left-0 right-0 bg-kin-black border-b border-kin-gold/20 px-4 py-3 flex items-center justify-between z-50">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-kin-gold/20 flex items-center justify-center">
-            <Crown size={16} className="text-kin-gold" />
-          </div>
-          <span className="text-white font-semibold">KIN <span className="text-kin-gold">HOME</span></span>
-        </div>
+      <div className="md:hidden fixed top-0 left-0 right-0 bg-[#0B0F14] border-b border-white/5 px-5 py-3.5 flex items-center justify-between z-50">
+        <span className="text-white text-sm font-semibold tracking-wide">
+          KIN <span className="text-kin-gold">HOME</span>
+        </span>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-gray-400 hover:text-kin-gold"
+          className="text-white/40 hover:text-kin-gold transition-colors"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
@@ -87,78 +93,108 @@ export default function SidebarContent({
       {/* Sidebar */}
       <aside
         className={`
-          fixed top-0 left-0 h-screen w-[272px] sidebar-gradient text-white flex flex-col
+          fixed top-0 left-0 h-screen w-[260px] sidebar-editorial text-white flex flex-col
           transition-transform duration-300 z-40
           md:relative md:translate-x-0 md:top-0
           ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
         `}
-        style={{ borderRight: '1px solid rgba(197, 162, 88, 0.12)' }}
+        style={{ borderRight: '1px solid rgba(255,255,255,0.06)' }}
       >
         {/* Logo */}
-        <div className="p-6 hidden md:block" style={{ borderBottom: '1px solid rgba(197, 162, 88, 0.12)' }}>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-kin-gold/20 flex items-center justify-center">
-              <Crown size={20} className="text-kin-gold" />
-            </div>
-            <div>
-              <div className="text-lg font-bold tracking-wide">
-                KIN <span className="text-kin-gold">HOME</span>
-              </div>
-              <div className="text-xs text-gray-500">Sales Training</div>
-            </div>
-          </div>
+        <div className="px-6 py-6 hidden md:block" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+          <Link href="/" className="block">
+            <span className="text-[15px] font-semibold tracking-wider text-white">
+              KIN <span className="text-kin-gold">HOME</span>
+            </span>
+            <span className="block text-[10px] text-white/30 uppercase tracking-[0.15em] mt-0.5">
+              Training Portal
+            </span>
+          </Link>
         </div>
 
-        {/* Search button */}
-        <div className="px-4 pt-4 pb-2 hidden md:block">
+        {/* Search */}
+        <div className="px-4 pt-5 pb-3 hidden md:block">
           <button
             onClick={() => setSearchOpen(true)}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition text-gray-400 hover:text-gray-200"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}
+            className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-white/30 hover:text-white/50 transition"
+            style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
           >
-            <Search size={16} className="text-kin-gold" />
-            <span className="flex-1 text-left text-sm">Search...</span>
-            <kbd className="text-[10px] text-gray-500 bg-white/5 px-1.5 py-0.5 rounded border border-white/10">⌘K</kbd>
+            <Search size={14} />
+            <span className="flex-1 text-left text-[13px]">Search...</span>
+            <kbd className="text-[10px] text-white/20 px-1.5 py-0.5 rounded border border-white/8">⌘K</kbd>
           </button>
         </div>
 
-        {/* MANUALS label */}
-        <div className="px-6 pt-6 pb-2">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-medium">Manuals</span>
-        </div>
+        <nav className="flex-1 overflow-y-auto px-3 pb-4 mt-2">
+          {/* Scenarios */}
+          <div className="mb-1">
+            <span className="block px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-white/25 font-medium">
+              Scenarios
+            </span>
+          </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 overflow-y-auto px-3 pb-4 mt-0 md:mt-0">
-          {manuals.map((manual) => {
+          {scenarios.map((scenario) => (
+            <Link
+              key={scenario.slug}
+              href={`/scenario/${scenario.slug}`}
+              onClick={() => setIsOpen(false)}
+              className={`
+                flex items-center gap-3 px-3 py-2 rounded-md text-[13px] mb-0.5 transition-colors
+                ${isActive(`/scenario/${scenario.slug}`)
+                  ? 'text-kin-gold bg-white/5'
+                  : 'text-white/45 hover:text-white/70 hover:bg-white/3'
+                }
+              `}
+            >
+              <span className="text-kin-gold/60">{scenarioIcons[scenario.icon] || <Crown size={16} />}</span>
+              {scenario.title}
+            </Link>
+          ))}
+
+          {/* Divider */}
+          <div className="my-4 mx-3 border-t border-white/5" />
+
+          {/* Manuals toggle */}
+          <button
+            onClick={() => setShowManuals(!showManuals)}
+            className="w-full flex items-center gap-2 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-white/25 font-medium hover:text-white/40 transition-colors"
+          >
+            <span className="flex-1 text-left">By Manual</span>
+            <ChevronDown
+              size={12}
+              className={`transition-transform duration-200 ${showManuals ? 'rotate-180' : ''}`}
+            />
+          </button>
+
+          {showManuals && manuals.map((manual) => {
             const sections = sectionsByManual[manual.slug] || [];
             const manualActive = isActive(`/${manual.slug}`);
             return (
-              <div key={manual.slug} className="mb-1">
+              <div key={manual.slug} className="mb-0.5">
                 <button
-                  onClick={() => handleManualClick(manual.slug)}
+                  onClick={() => setExpandedManual(expandedManual === manual.slug ? null : manual.slug)}
                   className={`
-                    w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition
+                    w-full flex items-center gap-3 px-3 py-2 rounded-md transition-colors text-[13px]
                     ${manualActive
-                      ? 'bg-kin-green/20 text-white'
-                      : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
+                      ? 'text-white/80 bg-white/5'
+                      : 'text-white/35 hover:text-white/55 hover:bg-white/3'
                     }
                   `}
                 >
-                  <span className="text-kin-gold">
-                    {iconMap[manual.icon] || <BookOpen size={18} />}
+                  <span className="text-kin-gold/50">
+                    {manualIcons[manual.icon] || <BookOpen size={16} />}
                   </span>
-                  <span className="flex-1 text-left text-sm font-medium">{manual.title}</span>
+                  <span className="flex-1 text-left">{manual.title}</span>
                   <ChevronDown
-                    size={14}
-                    className={`text-gray-500 transition-transform duration-200 ${
+                    size={12}
+                    className={`text-white/20 transition-transform duration-200 ${
                       expandedManual === manual.slug ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
 
-                {/* Sections */}
                 {expandedManual === manual.slug && (
-                  <div className="ml-5 mt-1 space-y-0.5 mb-2" style={{ borderLeft: '1px solid rgba(197, 162, 88, 0.15)' }}>
+                  <div className="ml-5 mt-0.5 mb-2 space-y-px" style={{ borderLeft: '1px solid rgba(255,255,255,0.06)' }}>
                     {sections.map((section) => {
                       const sectionActive = isActive(`/${manual.slug}/${section.slug}`);
                       return (
@@ -167,13 +203,12 @@ export default function SidebarContent({
                           href={`/${manual.slug}/${section.slug}`}
                           onClick={() => setIsOpen(false)}
                           className={`
-                            block pl-4 pr-3 py-2 text-[13px] transition rounded-r-lg
+                            block pl-4 pr-3 py-1.5 text-[12px] transition-colors rounded-r-md
                             ${sectionActive
-                              ? 'text-kin-gold font-medium bg-kin-gold/5'
-                              : 'text-gray-500 hover:text-gray-300'
+                              ? 'text-kin-gold bg-white/3'
+                              : 'text-white/30 hover:text-white/50'
                             }
                           `}
-                          style={sectionActive ? { borderLeft: '2px solid var(--color-kin-gold)', marginLeft: '-1px' } : {}}
                         >
                           {section.title}
                         </Link>
@@ -187,13 +222,13 @@ export default function SidebarContent({
         </nav>
 
         {/* Logout */}
-        <div className="p-4" style={{ borderTop: '1px solid rgba(197, 162, 88, 0.08)' }}>
+        <div className="p-4" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition text-gray-500 hover:text-red-400"
+            className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-white/25 hover:text-red-400/70 transition-colors text-[13px]"
           >
-            <LogOut size={16} />
-            <span className="text-sm">Sign out</span>
+            <LogOut size={14} />
+            Sign out
           </button>
         </div>
       </aside>

@@ -7,79 +7,134 @@ order: 9
 
 # Getting the Bill
 
-The utility bill is the foundation of every solar proposal. Without it, you're guessing. With it, you can show exact numbers — and exact numbers close appointments. Getting the bill at the door is a skill that separates good reps from great ones.
+<Lead>The utility bill is the foundation of every solar proposal. Without it, you're guessing. With it, you can show exact numbers — and exact numbers close appointments.</Lead>
+
+<Callout type="important" title="THE SKILL">
+Getting the bill at the door separates good reps from great ones.
+</Callout>
+
+<GoldRule />
 
 <Accordion title="Why the Bill Matters">
-The bill tells you:
-- Annual kWh usage (what size system they need)
-- Current monthly spend (your baseline for the comparison)
-- Whether they're NEM 1.0, 2.0, or 3.0 (affects the proposal)
-- Whether they have any existing solar credits
-- Rate plan (some rate plans make solar significantly more valuable)
 
-> *"The reason I want to see your bill is so I don't waste your time. If the numbers don't make sense for your situation, I'll tell you upfront. If they do, I want to show you exactly how it pencils out."*
+<StatBlock stats={[
+  { value: "kWh", label: "Annual usage → system size" },
+  { value: "$/mo", label: "Current spend → comparison baseline" },
+  { value: "NEM", label: "1.0, 2.0, or 3.0 → affects proposal" },
+  { value: "RATE", label: "Some plans make solar way more valuable" }
+]} />
+
+<PullQuote>"The reason I want to see your bill is so I don't waste your time. If the numbers don't make sense for your situation, I'll tell you upfront. If they do, I want to show you exactly how it pencils out."</PullQuote>
+
 </Accordion>
 
-<Accordion title="SDGE — Step by Step">
-**1. Find out how they get their bill:**
-> *"Do you get your bill online, or does it come in the mail?"*
+<GoldRule />
 
-**If online:**
-> *"Mind if we pull it up real quick? It takes about 30 seconds."*
+<Accordion title="SDGE — Step by Step">
+
+<Steps>
+<Step number={1} title="Find Out How They Get Their Bill">
+
+<PullQuote>"Do you get your bill online, or does it come in the mail?"</PullQuote>
+</Step>
+
+<Step number={2} title="If Online — Pull It Up">
+
+<PullQuote>"Mind if we pull it up real quick? It takes about 30 seconds."</PullQuote>
 
 Navigate to: **myenergycenter.com** → Billing → View Detailed Bill PDF
 
-The detailed bill PDF (not the summary screen) contains the annual usage data needed for an accurate proposal.
+<Callout type="tip">
+The **detailed bill PDF** (not the summary screen) contains the annual usage data needed for an accurate proposal.
+</Callout>
+</Step>
 
-**If paper:**
-Ask if they have last month's bill handy. If not, use the online path above.
-
-**Key data points to capture:**
-- Annual kWh (usually on the last page or the usage history chart)
+<Step number={3} title="Capture Key Data">
+- Annual kWh (usually last page or usage history chart)
 - Current monthly average
-- Rate plan (NEM status if solar present)
+- Rate plan / NEM status
+</Step>
+</Steps>
+
 </Accordion>
+
+<GoldRule />
 
 <Accordion title="Edison — Step by Step">
-Edison is a slightly different flow because their login process involves phone or email verification.
 
-**1. Let them know:**
-> *"Edison requires a quick verification code — they'll send it to your phone or email. Do you mind pulling that up while I'm here?"*
+<Callout type="insight">
+Edison requires a quick verification code — slightly different flow.
+</Callout>
 
-**2. Navigate to:** **sce.com/customer-service/self-service-forms/login-copy-bill**
+<Steps>
+<Step number={1} title="Let Them Know">
 
-**3. While they're verifying**, check the meter box. The meter number on the physical meter matches the account — useful if there's any confusion.
+<PullQuote>"Edison requires a quick verification code — they'll send it to your phone or email. Do you mind pulling that up while I'm here?"</PullQuote>
+</Step>
 
-**4. Once in:** Look for the annual usage summary. The 12-month total kWh is the key number.
+<Step number={2} title="Navigate">
+**sce.com/customer-service/self-service-forms/login-copy-bill**
+</Step>
+
+<Step number={3} title="While They Verify">
+Check the meter box. The meter number on the physical meter matches the account — useful if there's confusion.
+</Step>
+
+<Step number={4} title="Once In">
+Look for the annual usage summary. The **12-month total kWh** is the key number.
+</Step>
+</Steps>
+
 </Accordion>
 
-<Accordion title="Green Button Data (For Detailed Analysis)">
-For prospects with complex usage patterns or high bills, Green Button Data gives the most accurate picture:
+<GoldRule />
 
-1. Log into **myenergycenter.com**
-2. Go to: **Usage → Green Button Data**
-3. Select: **12 months, 15-minute interval**
-4. Download the **.csv** file
-5. Send to: **dwest@yourenergybest.com**
+<Accordion title="Green Button Data (Detailed Analysis)">
 
-The manager will use this for precise system sizing and proposal accuracy.
+For complex usage patterns or high bills:
+
+<Steps>
+<Step number={1} title="Log Into myenergycenter.com">
+Navigate to Usage → Green Button Data.
+</Step>
+<Step number={2} title="Select Parameters">
+12 months, 15-minute interval.
+</Step>
+<Step number={3} title="Download .csv File">
+Send to your manager for precise system sizing and proposal accuracy.
+</Step>
+</Steps>
+
 </Accordion>
+
+<GoldRule />
 
 <Accordion title="Handling Resistance">
-**"I don't want to log in at the door."**
-> *"Totally fair. What if I just got your bill amount? I can run a rough estimate now and we'll pull the exact numbers when my manager comes by."*
 
-**"I don't know my login."**
-> *"No problem — the paper bill has your account number on it. Or we can use the usage estimate method. Do you have any idea roughly what you pay per month on average?"*
+### "I don't want to log in at the door."
 
-**"Why do you need my bill?"**
-> *"Honestly, just to make sure the numbers work in your favor before I have my manager come out. I'm not going to waste your evening if it doesn't make sense — and I can't know that without seeing usage."*
+<PullQuote>"Totally fair. What if I just got your bill amount? I can run a rough estimate now and we'll pull the exact numbers when my manager comes by."</PullQuote>
+
+### "I don't know my login."
+
+<PullQuote>"No problem — the paper bill has your account number on it. Or we can use the estimate method. Do you have any idea roughly what you pay per month on average?"</PullQuote>
+
+### "Why do you need my bill?"
+
+<PullQuote>"Honestly, just to make sure the numbers work in your favor before I have my manager come out. I'm not going to waste your evening if it doesn't make sense — and I can't know that without seeing usage."</PullQuote>
+
 </Accordion>
 
+<GoldRule />
+
 <Accordion title="If You Can't Get the Bill">
-Don't abandon the appointment. Use the estimate path:
 
-> *"What would you say your average monthly bill is — summer and winter?"*
+<Callout type="tip">
+Don't abandon the appointment. Use the estimate path.
+</Callout>
 
-Then estimate annual kWh at roughly 500-700 kWh per $100 of bill (SDGE). It's not precise, but it's enough to determine whether the conversation is worth continuing, and the manager will confirm at the sit.
+<PullQuote>"What would you say your average monthly bill is — summer and winter?"</PullQuote>
+
+<KeyTerm term="Quick Estimate">Roughly 500-700 kWh per $100 of SDGE bill. Not precise, but enough to determine if the conversation is worth continuing. The manager will confirm at the sit.</KeyTerm>
+
 </Accordion>

@@ -1,140 +1,190 @@
 import Link from 'next/link';
-import { BookOpen, Hammer, UserCheck, ArrowRight, Zap, Users, Target } from 'lucide-react';
-import { getManuals, getArticleCount } from '@/lib/content';
+import { DoorOpen, Handshake, HardHat, Crown } from 'lucide-react';
+import { scenarios } from '@/lib/scenarios';
+import HomeNav from '@/components/HomeNav';
+import ScenarioVideo from '@/components/ScenarioVideo';
 
 const iconMap: Record<string, React.ReactNode> = {
-  BookOpen: <BookOpen size={28} />,
-  Hammer: <Hammer size={28} />,
-  UserCheck: <UserCheck size={28} />,
+  DoorOpen: <DoorOpen size={32} strokeWidth={1} />,
+  Handshake: <Handshake size={32} strokeWidth={1} />,
+  HardHat: <HardHat size={32} strokeWidth={1} />,
+  Crown: <Crown size={32} strokeWidth={1} />,
 };
 
-export default async function DashboardPage() {
-  const manuals = await getManuals();
+const sectionColors = ['#0D1117', '#0A0D12', '#0D1117', '#0A0D12'];
 
+// Map scenario slugs to video files in /public
+const scenarioVideos: Record<string, string> = {
+  'at-the-door': '/at-the-door.mp4',
+  'at-the-kitchen-table': '/at-the-kitchen-table.mp4',
+  'on-the-job': '/on-the-job.mp4',
+  'building-your-empire': '/building-your-empire.mp4',
+};
+
+export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-kin-cream">
-      {/* Hero Section */}
-      <div className="hero-gradient text-white px-6 md:px-12 py-16 md:py-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-kin-gold text-xs uppercase tracking-[0.25em] font-semibold mb-4">
-            Griffin Hill Sales System
-          </div>
-          <h1 style={{ fontFamily: "'Playfair Display', serif" }} className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            Welcome to KIN Home Training
-          </h1>
-          <p className="text-gray-300 text-lg md:text-xl max-w-2xl">
-            Master the Griffin Hill sales system. Everything you need to excel in sales,
-            team building, and customer success.
-          </p>
-        </div>
-      </div>
+    <div style={{ backgroundColor: '#0D1117' }}>
+      {/* Floating nav */}
+      <HomeNav />
 
-      {/* Content */}
-      <div className="max-w-6xl mx-auto px-6 md:px-12 py-12">
-        {/* Start Here Banner */}
-        <div className="bg-white rounded-xl p-6 mb-12 border border-[#e5e1d8]" style={{ borderLeft: '4px solid var(--color-kin-gold)', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-2xl font-bold text-kin-black mb-2">
-            Start Here: Setter Manual
-          </h2>
-          <p className="text-gray-600 mb-4">
-            New to the team? Start with the Setter Manual — learn the Case Open, Needs Audit,
-            and the mindset that gets you setting quality appointments from day one.
-          </p>
-          <Link
-            href="/setter-manual"
-            className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-lg transition hover:opacity-90"
-            style={{ background: 'linear-gradient(135deg, #006039, #007a49)' }}
+      {/* ===== HERO — Full viewport, single ocean photo ===== */}
+      <section
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{
+          height: '100vh',
+          backgroundImage: 'url(/hero-ocean.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* Gradient overlays for text readability */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.25) 60%, rgba(13,17,23,1) 100%)' }}
+        />
+
+        {/* Centered content */}
+        <div className="relative z-10 text-center px-8">
+          <p
+            className="mb-8"
+            style={{ color: '#C5A258', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.35em', fontWeight: 500 }}
           >
-            Get Started <ArrowRight size={18} />
-          </Link>
-        </div>
+            KIN Home · Griffin Hill Sales System
+          </p>
+          <h1
+            className="mb-8"
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: 'clamp(3rem, 8vw, 7rem)',
+              fontWeight: 700,
+              lineHeight: 0.95,
+              letterSpacing: '-0.03em',
+              color: '#FFFFFF',
+            }}
+          >
+            Master<br />Your Craft
+          </h1>
+          <p
+            className="max-w-md mx-auto"
+            style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.125rem', fontWeight: 300, lineHeight: 1.6 }}
+          >
+            From the first knock to the signed contract.
+          </p>
 
-        {/* Manual Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {await Promise.all(
-            manuals.map(async (manual) => {
-              const articleCount = await getArticleCount(manual.slug);
-              return { manual, articleCount };
-            })
-          ).then((results) =>
-            results.map(({ manual, articleCount }) => (
-              <Link
-                key={manual.slug}
-                href={`/${manual.slug}`}
-                className="group card-premium block p-8"
-              >
-                {/* Icon */}
-                <div className="inline-flex p-3.5 bg-kin-cream rounded-xl mb-5 text-kin-gold group-hover:text-kin-green transition">
-                  {iconMap[manual.icon] || <BookOpen size={28} />}
+          {/* Scroll indicator */}
+          <div className="mt-16 animate-bounce">
+            <div style={{ width: '1px', height: '48px', background: 'linear-gradient(to bottom, transparent, rgba(197,162,88,0.5))', margin: '0 auto' }} />
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SCENARIO SECTIONS ===== */}
+      {scenarios.map((scenario, i) => {
+        const isEven = i % 2 === 0;
+        return (
+          <section
+            key={scenario.slug}
+            style={{ backgroundColor: sectionColors[i] || '#0D1117' }}
+          >
+            <div
+              className="flex items-center"
+              style={{ minHeight: '85vh' }}
+            >
+              <div className="w-full px-8 md:px-16 py-24 md:py-32" style={{ maxWidth: '80rem', margin: '0 auto' }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 items-center" style={{ gap: '6rem' }}>
+                  {/* Text side */}
+                  <div className={!isEven ? 'md:order-2' : ''}>
+                    {/* Icon */}
+                    <div style={{ color: 'rgba(197,162,88,0.5)', marginBottom: '2rem' }}>
+                      {iconMap[scenario.icon]}
+                    </div>
+
+                    {/* Overline */}
+                    <p style={{ color: 'rgba(197,162,88,0.5)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.3em', fontWeight: 500, marginBottom: '1.5rem' }}>
+                      {scenario.articles.length} Training Modules
+                    </p>
+
+                    {/* Title */}
+                    <h2 style={{
+                      fontFamily: "'Playfair Display', serif",
+                      fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+                      fontWeight: 700,
+                      lineHeight: 1.05,
+                      letterSpacing: '-0.02em',
+                      color: '#FFFFFF',
+                      marginBottom: '1.5rem',
+                    }}>
+                      {scenario.title}
+                    </h2>
+
+                    {/* Subtitle */}
+                    <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '1.25rem', fontWeight: 300, fontStyle: 'italic', marginBottom: '2rem' }}>
+                      {scenario.subtitle}
+                    </p>
+
+                    {/* Description */}
+                    <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.9375rem', lineHeight: 1.7, maxWidth: '28rem', marginBottom: '3rem' }}>
+                      {scenario.description}
+                    </p>
+
+                    {/* CTA */}
+                    <Link
+                      href={`/scenario/${scenario.slug}`}
+                      style={{ color: '#C5A258', fontSize: '0.875rem', fontWeight: 500, letterSpacing: '0.05em', borderBottom: '1px solid rgba(197,162,88,0.3)', paddingBottom: '4px' }}
+                    >
+                      Enter
+                    </Link>
+                  </div>
+
+                  {/* Visual side */}
+                  {scenarioVideos[scenario.slug] ? (
+                    <div className={!isEven ? 'md:order-1' : ''} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <ScenarioVideo
+                        src={scenarioVideos[scenario.slug]}
+                        href={`/scenario/${scenario.slug}`}
+                      />
+                    </div>
+                  ) : (
+                    <div className={`${!isEven ? 'md:order-1' : ''} hidden md:flex items-center justify-center`}>
+                      <span
+                        className="select-none"
+                        style={{
+                          fontFamily: "'Playfair Display', serif",
+                          fontSize: 'clamp(10rem, 15vw, 18rem)',
+                          fontWeight: 700,
+                          lineHeight: 1,
+                          color: 'transparent',
+                          WebkitTextStroke: '1px rgba(197,162,88,0.06)',
+                        }}
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                  )}
                 </div>
+              </div>
+            </div>
 
-                {/* Title */}
-                <h3 style={{ fontFamily: "'Playfair Display', serif" }} className="text-xl font-bold text-kin-black mb-2 group-hover:text-kin-gold transition">
-                  {manual.title}
-                </h3>
+            {/* Divider between sections */}
+            {i < scenarios.length - 1 && (
+              <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(197,162,88,0.08), transparent)' }} />
+            )}
+          </section>
+        );
+      })}
 
-                {/* Description */}
-                <p className="text-gray-500 text-sm mb-6 line-clamp-3 leading-relaxed">
-                  {manual.description}
-                </p>
-
-                {/* Article Count */}
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
-                    {articleCount} {articleCount === 1 ? 'article' : 'articles'}
-                  </span>
-                  <ArrowRight
-                    size={18}
-                    className="text-kin-gold group-hover:translate-x-1 transition-transform"
-                  />
-                </div>
-              </Link>
-            ))
-          )}
+      {/* ===== FOOTER ===== */}
+      <section style={{ backgroundColor: '#0D1117', padding: '6rem 0' }}>
+        <div className="text-center px-8">
+          <p style={{ color: 'rgba(197,162,88,0.3)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.3em', marginBottom: '1.5rem' }}>
+            KIN Home
+          </p>
+          <p style={{ color: 'rgba(255,255,255,0.15)', fontSize: '0.875rem' }}>
+            Griffin Hill Integrity Sales System
+          </p>
         </div>
-
-        {/* Gold divider */}
-        <hr className="gold-divider" />
-
-        {/* Feature highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="inline-flex p-3 bg-kin-gold/10 rounded-full mb-4">
-              <Target size={22} className="text-kin-gold" />
-            </div>
-            <h3 style={{ fontFamily: "'Playfair Display', serif" }} className="text-base font-bold text-kin-black mb-2">
-              Comprehensive Manuals
-            </h3>
-            <p className="text-gray-500 text-sm leading-relaxed">
-              Access detailed training materials covering all aspects of solar sales.
-            </p>
-          </div>
-
-          <div className="text-center">
-            <div className="inline-flex p-3 bg-kin-green/10 rounded-full mb-4">
-              <Users size={22} className="text-kin-green" />
-            </div>
-            <h3 style={{ fontFamily: "'Playfair Display', serif" }} className="text-base font-bold text-kin-black mb-2">
-              Team Building
-            </h3>
-            <p className="text-gray-500 text-sm leading-relaxed">
-              Learn strategies to build and scale your sales team with proven norms.
-            </p>
-          </div>
-
-          <div className="text-center">
-            <div className="inline-flex p-3 bg-kin-green/5 rounded-full mb-4">
-              <Zap size={22} className="text-kin-green" />
-            </div>
-            <h3 style={{ fontFamily: "'Playfair Display', serif" }} className="text-base font-bold text-kin-black mb-2">
-              Skill Mastery
-            </h3>
-            <p className="text-gray-500 text-sm leading-relaxed">
-              Develop expertise in setting, closing, and managing customer relationships.
-            </p>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }

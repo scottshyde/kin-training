@@ -6,333 +6,227 @@ order: 1
 
 # Solar Equipment Overview for Closers
 
-You don't need to be an engineer, but you need to understand what you're selling well enough to explain it confidently. This guide covers panels, inverters, batteries, and supporting systems so you can speak with authority and know when to defer to technical specialists.
+<Lead>You don't need to be an engineer, but you need to understand what you're selling well enough to explain it confidently. This guide covers panels, inverters, batteries, and supporting systems so you can speak with authority.</Lead>
 
-<Accordion title="Why Equipment Knowledge Matters">
-You don't need to be an engineer, but you **do** need to understand what you're selling well enough to explain it confidently to customers. Equipment knowledge builds credibility and allows you to answer common customer questions without hedging or saying "I'll check with our engineer."
+<GoldRule />
 
-Your goal: Speak with confidence about the equipment while knowing when to defer to technical specialists for deep technical questions.
+<Accordion title="The Four Core Components">
+
+<StatBlock stats={[
+  { value: "PANELS", label: "Convert sunlight into electricity" },
+  { value: "INVERTER", label: "Converts DC to AC for your home" },
+  { value: "BOS", label: "Wiring, disconnects, breakers — safety" },
+  { value: "MONITORING", label: "Tracks production, alerts to issues" }
+]} />
+
+<KeyTerm term="Optional Fifth Component">Battery Storage — stores excess solar for evening use and outages. Under NEM 3.0, this is no longer optional.</KeyTerm>
+
 </Accordion>
 
-<Accordion title="The Four Core Components of a Solar System">
-Every solar system consists of four main components:
+<GoldRule />
 
-1. **Solar Panels** - Convert sunlight into electricity
-2. **Inverter** - Converts DC electricity from panels to AC electricity for your home
-3. **Electrical Balance of System** - Wiring, disconnects, breakers that safely manage power
-4. **Monitoring System** - Tracks production and alerts you to issues
+<Accordion title="Solar Panels">
 
-**Optional Fifth Component:**
-- **Battery Storage** - Stores excess solar production for use during evening/outages
+### Key Specifications
+
+<StatBlock stats={[
+  { value: "330-430W", label: "Typical residential panel wattage" },
+  { value: "18-22%", label: "Efficiency range" },
+  { value: "25yr", label: "Linear degradation warranty" },
+  { value: "80%+", label: "Guaranteed capacity at 25 years" }
+]} />
+
+<KeyTerm term="Temperature Coefficient">How much output decreases in heat. Range: -0.25% to -0.40% per °C above 25°C. San Diego systems produce ~10% less on 110° days vs. 75° days. Better panels have lower coefficients.</KeyTerm>
+
+### Panel Tiers
+
+**Tier 1 (Premium):** LG, Sunpower, Panasonic — higher cost, better efficiency, proven longevity.
+
+**Tier 2 (Mid-Range):** Canadian Solar, JinkoSolar, JA Solar — good balance of cost and performance.
+
+**Tier 3 (Budget):** Avoid. Higher failure rates, warranty risk, damages customer satisfaction.
+
+<PullQuote>"We use 400W panels with 20.2% efficiency and a 0.37% negative temperature coefficient. Even on hot San Diego days, you're getting excellent performance. Backed by a 25-year warranty — best in the industry."</PullQuote>
+
+### Monocrystalline vs. Polycrystalline
+
+<Callout type="tip">
+All modern residential installs use **monocrystalline** — single crystal, higher efficiency (18-22%), better low-light performance, sleeker look, longer lifespan. Polycrystalline (15-17%) is becoming obsolete.
+</Callout>
+
 </Accordion>
 
-<Accordion title="Solar Panels: Understanding What You're Installing">
-### Basic Panel Specifications
+<GoldRule />
 
-Every solar panel has key specifications that determine its performance:
+<Accordion title="Inverters">
 
-**Wattage (Power Output):**
-- Typical residential panels: 330W to 430W
-- Higher wattage = more power from each panel = fewer panels needed
-- Modern panels trend toward higher wattage for efficiency
-- A 10kW system might use 23-24 of 430W panels, or 30 of 330W panels
+### Two Types
 
-**Efficiency Rating:**
-- Efficiency = percentage of sunlight converted to electricity
-- Typical range: 18% to 22%
-- Higher efficiency = more power in the same space (matters if roof is limited)
-- Efficiency difference between best and worst panels: ~3% (not huge in real-world impact)
+<Steps>
+<Step number={1} title="String Inverters (Most Common)">
+All panels wired together in "strings" — one central inverter converts all DC to AC. **Less expensive**, simpler to install. Drawback: if one panel has shade, entire string is affected.
 
-**Temperature Coefficient:**
-- How much panel output decreases in heat
-- Range: -0.25% to -0.40% per degree Celsius above 25 degrees C
-- Lower (more negative) = worse performance in heat
-- California heat can matter: Your San Diego system will perform ~10% worse on 110 degree days vs. 75 degree days
-- Better quality panels have lower temperature coefficients
+**Best for:** Roofs with good uniform sun exposure, budget-conscious customers.
+</Step>
 
-**Warranty:**
-- Product warranty: Typically 10-12 years (manufacturer defect)
-- Linear degradation warranty: Typically 25 years (guarantees panel won't degrade below 80% of rated capacity)
+<Step number={2} title="Micro-Inverters (Premium)">
+Each panel gets its own tiny inverter. Independent optimization and monitoring. **Better for complex roofs** with multiple angles or shading. 30-50% higher cost.
 
-### Common Solar Panel Brands & Tiers
+**Best for:** Complex roofs, significant shading, customers who value max production.
+</Step>
+</Steps>
 
-**Tier 1 (Premium) - Best for most customers:**
-- LG, Sunpower, Panasonic
-- Higher cost, better efficiency, better temperature coefficients
-- Longevity proven
-- Better warranty terms
-- Use these for premium positioning and customer confidence
+### Specs to Know
 
-**Tier 2 (Mid-Range) - Good value:**
-- Canadian Solar, JinkoSolar, JA Solar
-- Good balance of cost and performance
-- Growing track record
-- Solid warranty
-- Good for cost-conscious customers
+<StatBlock stats={[
+  { value: "95-97%", label: "Modern inverter efficiency" },
+  { value: "10-25yr", label: "Warranty range" },
+  { value: "$2-4K", label: "Replacement cost (covered by warranty)" },
+  { value: "APP", label: "Real-time monitoring included" }
+]} />
 
-**Tier 3 (Budget) - Rarely recommend:**
-- No-name brands, very cheap panels
-- Higher failure rates
-- Warranty issues (company might not exist in 10 years)
-- Avoid these - they damage customer satisfaction
+**Top Brands:** SMA (German, 25yr warranty), Enphase (micro-inverter leader), Solaredge (excellent optimization), Fronius (premium Austrian).
 
-**For KIN:** Know which specific brand/model you're using, what the wattage is, and the efficiency rating. You should be able to say:
-
-> "We use [Brand] 400W panels with 20.2% efficiency and a 0.37% negative temperature coefficient. That means even on hot San Diego days, you're getting excellent performance. And they're backed by a 25-year linear degradation warranty - best in the industry."
-
-### Panel Technology: Monocrystalline vs. Polycrystalline
-
-**Monocrystalline (Dominant now - use this):**
-- Single crystal structure
-- Higher efficiency (18-22%)
-- Better performance in low light
-- More expensive per watt
-- Sleeker appearance
-- Longer lifespan
-- Default choice for residential
-
-**Polycrystalline (Becoming obsolete):**
-- Multiple crystal structure
-- Lower efficiency (15-17%)
-- Lower cost per watt
-- Less common now
-- Don't recommend unless customer is extremely cost-conscious
-
-**Your Script:**
-> "All our panels are monocrystalline, which means they're the highest efficiency available. That's important because it means we can fit more power into the same roof space, and you get better production on those San Diego cloudy days too."
 </Accordion>
 
-<Accordion title="Inverters: Converting DC to AC Power">
-All solar panels produce DC (direct current) electricity. Your home runs on AC (alternating current) electricity. The inverter is the bridge.
+![Tesla Powerwall mounted on a modern home with solar panels](/battery-hero.png)
 
-### Two Inverter Types
+<GoldRule />
 
-**1. String Inverters (Most Common for Residential)**
+<Accordion title="Batteries Under NEM 3.0: Why Every System Needs One">
 
-How it works:
-- All panels are wired together in "strings" (like a chain)
-- One central inverter converts all DC power to AC at once
-- AC is sent to the electrical panel and distributed through the home
+<Callout type="important" title="THE NEW REALITY">
+NEM 3.0 changed everything. Export credits dropped roughly **75%**. Without a battery, you're giving solar away for almost nothing during the day and buying it back at peak rates in the evening.
+</Callout>
 
-**Advantages:**
-- Less expensive
-- Simpler to install
-- Well-established technology
-- One point of failure (though rare)
+<PullQuote>"Under the new rules in California, sending solar back to the grid doesn't pay you much at all anymore. That's why every system we install now includes battery storage. You store your solar during the day and use it in the evening when rates are highest. That's how you actually save money under the new structure."</PullQuote>
 
-**Disadvantages:**
-- If one panel has shade, entire string is affected
-- Single inverter failure means no production until replaced
-- Slightly lower overall efficiency in mixed conditions
-
-**Use When:**
-- Roof has good, uniform sun exposure
-- Budget-conscious customer
-- Minimal shading
-
-**Your Script:**
-> "We use a string inverter system, which is the most common approach in residential solar. One central inverter handles all the conversion, and it's extremely reliable. The inverter is covered by our 25-year warranty, same as the panels."
-
----
-
-**2. Micro-Inverters (Premium Option)**
-
-How it works:
-- Each panel gets its own tiny inverter (mounted on the back of the panel)
-- Each panel converts its own DC to AC independently
-- AC from each panel flows directly to the electrical panel
-- Individual optimization and monitoring
-
-**Advantages:**
-- Shading on one panel doesn't affect others
-- Each panel is optimized independently
-- Better monitoring of individual panel performance
-- Slightly higher overall efficiency in mixed conditions
-
-**Disadvantages:**
-- More expensive (30-50% higher cost)
-- More components to potentially fail (though failure rate is still very low)
-- More complex installation
-
-**Use When:**
-- Complex roof with multiple angles/exposures
-- Significant shading concerns
-- Customer values maximum production
-- Premium positioning
-
-**Your Script (if using microinverters):**
-> "We use micro-inverters, which means each panel has its own inverter. This is the premium approach - even if one panel has shade, every other panel produces at full capacity. You're getting maximum optimization and the best monitoring system available. It costs more upfront, but you get the maximum production and longest lifespan."
-
-### Inverter Specifications You Should Know
-
-**Continuous Output (Power Rating):**
-- Measured in kW (kilowatts)
-- Your 8.2kW panel system needs a minimum 6.5-7.5kW inverter
-- Don't need 1:1 ratio because solar doesn't produce rated capacity all day
-- Undersizing is OK within reason (10-20% undersizing is common and acceptable)
-
-**Efficiency:**
-- Modern inverters are 95-97% efficient
-- "Efficiency" means how much power is lost in the conversion (so 97% efficient = 3% loss)
-- Don't emphasize this - it's not a meaningful differentiator
-
-**Warranty:**
-- Typical: 10-12 years (some extend to 25 years for premium)
-- This is important to mention
-- Replacement cost is $2,000-$4,000, so warranty gives peace of mind
-
-**Monitoring Capability:**
-- Best inverters have built-in monitoring
-- Shows real-time production
-- Alerts you if there's a problem
-- Usually app-based
-
-### Specific Inverter Brands to Know
-
-**Best Options (mention confidently):**
-- SMA (German company, excellent reputation, 25-year warranty available)
-- Enphase (micro-inverter leader, best monitoring)
-- Solaredge (excellent optimization, good monitoring)
-- Fronius (premium Austrian brand, excellent for exports)
-
-**Your Script:**
-> "Our inverters are [Brand], which is industry-leading. They're built to last 25+ years, and the monitoring system is excellent - you'll be able to see your production in real time on an app."
 </Accordion>
 
-<Accordion title="Batteries: Energy Storage for Later">
-Not all systems have batteries, but it's an increasingly popular add-on. Understand the basics.
+<GoldRule />
 
-### Why Batteries Matter
+<Accordion title="Grid Arbitrage">
 
-Without battery: Your solar system produces during the day, you use what you need, excess goes back to the grid
-With battery: Solar production goes first to the battery, then to your home, then excess to grid - you use stored power in evening/night
+<KeyTerm term="Grid Arbitrage">The battery pays for itself by shifting energy from cheap production hours to expensive consumption hours.</KeyTerm>
 
-**Benefits of batteries:**
-- Energy independence (less reliant on grid)
-- Backup power during outages
-- Potentially lower bills (use free solar power 24/7, not just daytime)
-- Protection from future rate increases (even more dramatic with battery)
+<Steps>
+<Step number={1} title="Solar Produces During the Day">
+Electricity rates are low — your production cost is $0.00.
+</Step>
+<Step number={2} title="Battery Stores Instead of Exporting">
+No more giving away power for pennies.
+</Step>
+<Step number={3} title="Discharge During Peak (4-9pm)">
+SDGE charges $0.50+/kWh. Every kWh your battery shifts saves that full amount.
+</Step>
+<Step number={4} title="The Spread = Your Savings">
+Off-peak to peak spread in San Diego runs **$0.30-$0.50+** per kWh. Over a year, that's thousands.
+</Step>
+</Steps>
 
-**Costs of batteries:**
-- Additional $8,000-$15,000 per battery
-- Most homes add one 10-13kWh battery
-- Requires more complex installation
+<PullQuote>"Think of your battery like a savings account for electricity. You fill it up when power is cheap — or free from your solar — and spend it when power is the most expensive. That's where your real savings come from."</PullQuote>
 
-### Battery Types & Specifications
-
-**Lithium-Ion (Standard for residential):**
-- Most common type now
-- Long lifespan (10+ years)
-- Better efficiency (95%+)
-- More expensive upfront
-- Best total value
-
-**Usable Capacity:**
-- Measured in kWh (kilowatt-hours)
-- 10kWh battery = 10 hours of 1kW usage
-- 13.5kWh battery = your home's daily usage typically
-- Most San Diego homes: 10-15kWh is optimal
-
-**Depth of Discharge (DoD):**
-- What percentage of the battery can be used
-- 90% DoD = you can use 90% of capacity (10% stays reserved)
-- Higher is better, but affects longevity
-- Don't get too technical here - mention "it's designed to last the full 25 years"
-
-### Battery Brands
-
-**Best for residential:**
-- Tesla Powerwall (most popular, excellent app, 13.5kWh)
-- Generac PWRcell (modular, flexible capacity)
-- Enphase IQ Battery (pairs well with micro-inverters)
-- LG Chem (excellent warranty, reliable)
-
-**Your Script:**
-> "If you want to maximize your investment, we can add battery storage. A battery lets you store your solar production and use it in the evening, so you're running on your own power 24/7. Instead of paying SDGE for evening power, you're using the free solar you made during the day. It's the ultimate energy independence."
-
-### When to Recommend Battery
-
-- Customer values backup power
-- Customer concerned about future rate increases
-- System is in area prone to outages
-- Customer wants maximum savings
-- Budget allows (it's expensive)
-
-**Word Track:**
-> "Most customers start with solar only - it's a great investment by itself. But some customers add battery storage, which gives you the backup power for outages and lets you use your solar 24/7. It costs more upfront, but it's the premium approach. Is that something that interests you?"
 </Accordion>
 
-<Accordion title="Electrical Balance of System (BOS)">
-You don't need to explain this in detail, but understand what it includes:
+<GoldRule />
 
-**What's included:**
-- Wiring from panels to inverter
-- Disconnect switches (safety)
-- Circuit breakers and overcurrent protection
-- Conduit and hardware
+<Accordion title="Non-Export Mode">
 
-**Why it matters:**
-- Safety: Protects your home and installers
-- Code compliance: Required by electrical code
-- Performance: Proper sizing prevents losses
+<KeyTerm term="Non-Export">Your system never sends power back to the grid. Every kWh stays in your home or your battery.</KeyTerm>
 
-**What you say:**
-> "We handle all the wiring and electrical work to code. Everything is permitted and inspected, so you know it's done right."
+**Why it works under NEM 3.0:** Export credits are so low that self-consumption is worth **4-5x more** than exporting.
+
+<Steps>
+<Step number={1} title="Solar Produces → Home Uses What It Needs">
+Direct consumption first.
+</Step>
+<Step number={2} title="Excess Charges the Battery">
+Everything surplus goes to storage.
+</Step>
+<Step number={3} title="Battery Full → System Throttles">
+No export. No giving it away.
+</Step>
+<Step number={4} title="Evening → Battery Discharges at Peak">
+Maximum value from every kWh.
+</Step>
+</Steps>
+
+<PullQuote>"We set your system to keep every bit of power you produce. Nothing goes back to the grid. You use it or you store it. No giving it away for pennies."</PullQuote>
+
 </Accordion>
 
-<Accordion title="Monitoring System: Tracking Your Production">
-Every modern system includes monitoring, though quality varies.
+<GoldRule />
 
-### What Good Monitoring Does
+<Accordion title="Partial Backup">
 
-- Shows real-time production (kWh being produced right now)
-- Shows historical production (today, month, year)
-- Shows energy usage if you have a meter
-- Alerts you to problems (production drop = possible issue)
-- App-based so you can check from anywhere
-- Web-based dashboard for detailed analysis
+<Callout type="insight">
+One battery powering your **whole** house during an outage — that's not how it works. Partial backup covers only your **critical circuits**.
+</Callout>
 
-### Monitoring Talking Points
+**What stays on:** Refrigerator, lights in key rooms, Wi-Fi router, phone charging, garage door.
 
-**Your Script:**
-> "You'll get a monitoring app on your phone where you can see exactly how much power you're producing in real time. On a sunny San Diego day, you'll watch your production climb. It's actually kind of addictive - customers love watching their savings happen in real time. Plus, if there's ever a problem, we get an alert before you even notice."
+**What doesn't:** HVAC, electric stove, pool pump, EV charger, washer/dryer.
 
-**Data and Privacy:**
-- Monitoring data is yours
-- Company collects usage data only with consent
-- You can view historical data anytime
-- Don't worry about privacy - solar companies are legitimate businesses
+<KeyTerm term="Critical Loads Panel">Wired separately during installation. Only designated circuits get battery power in an outage. One battery (10-15 kWh) keeps critical loads running **12-24+ hours**.</KeyTerm>
+
+<PullQuote>"Your battery keeps the essentials running during an outage — fridge, lights, Wi-Fi, devices. We wire a critical loads panel so the important things stay on. One battery can keep those running a full day or more."</PullQuote>
+
 </Accordion>
 
-<Accordion title="The Complete System Package: What You're Actually Selling">
-When you talk to a customer about "your solar system," you're talking about a complete package:
+<GoldRule />
 
-**Example 8.2kW System Description:**
-> "Your system will consist of 24 Sunpower 430-watt monocrystalline panels with 22% efficiency - that's the highest-efficiency residential panel available. The panels produce DC power, which gets converted to AC power by a Fronius inverter - industry-leading German engineering with a 25-year warranty.
->
-> All the wiring and electrical connections are installed to code by our in-house installation team. And you'll have professional monitoring so you can see your production in real time.
->
-> The whole system is backed by a 25-year warranty on everything - panels, inverter, workmanship, and performance guarantee. That's our commitment to you."
+<Accordion title="Full Backup">
+
+<StatBlock stats={[
+  { value: "2-4", label: "Batteries required (depends on home size)" },
+  { value: "LARGE", label: "Inverter capacity for surge loads" },
+  { value: "$20-40K+", label: "Additional investment" },
+  { value: "100%", label: "Every circuit stays on" }
+]} />
+
+**Who it's for:** Medical equipment needs, high-end homes, frequent outage areas, total energy independence.
+
+<Callout type="warning" title="SET THE EXPECTATION EARLY">
+If a customer thinks one battery runs their whole house and the AC doesn't turn on during the first outage, you've lost them. Get ahead of it.
+</Callout>
+
+<PullQuote>"You want full coverage — we can do that. We size the battery bank to handle your entire home. AC, appliances, everything. During an outage, you won't even notice the grid went down."</PullQuote>
+
 </Accordion>
 
-<Accordion title="Common Customer Questions About Equipment">
-**Q: "How long do solar panels last?"**
-A: "The panels are designed to produce at 80% of their rated capacity after 25 years. Most installations we see from 20+ years ago are still producing great. They essentially last forever - they just degrade very slowly. Inverters typically last 25-30 years before needing replacement, which is covered by warranty."
+<GoldRule />
 
-**Q: "What happens if a panel breaks?"**
-A: "The panel is covered by our 25-year warranty. If anything ever fails, we replace it at no cost. But the good news is - panels are incredibly durable. They're tested to withstand hail, extreme wind, and temperature swings. We've installed thousands of systems, and panel failures are extremely rare."
+<Accordion title="Monitoring System">
 
-**Q: "Do the panels work on cloudy days?"**
-A: "Yes, absolutely. Solar panels work on cloudy days - they produce about 25-50% of their rated output compared to sunny days. San Diego has so many sunny days that even with a few cloudy days, your annual production is excellent. The panels use the full spectrum of light, not just direct sun."
+<StatBlock stats={[
+  { value: "REAL-TIME", label: "Production right now" },
+  { value: "HISTORICAL", label: "Today, month, year" },
+  { value: "ALERTS", label: "Problem detection before you notice" },
+  { value: "APP", label: "Check from anywhere" }
+]} />
 
-**Q: "What about when it's really hot?"**
-A: "That's actually a good question. Solar panels are less efficient when they're very hot - it's kind of counterintuitive, right? On a 110 degree day, your system might produce 10-15% less than on a 75 degree day. But our panels have excellent temperature coefficients, which minimizes that loss. Plus, the air flow under the panels helps keep them cooler."
+<PullQuote>"You'll get a monitoring app on your phone where you can see exactly how much power you're producing in real time. On a sunny San Diego day, you'll watch your production climb. It's actually kind of addictive. Plus, if there's ever a problem, we get an alert before you even notice."</PullQuote>
+
 </Accordion>
 
-<Accordion title="Equipment Quality = Customer Satisfaction">
-Remember: The equipment you install today determines your customer's satisfaction for 25+ years. Cheap equipment leads to disappointed customers. Quality equipment leads to raving fans.
+<GoldRule />
 
-When you talk about equipment, you're building confidence that KIN does things right. Use that knowledge to position your company as the premium choice, not the cheapest option.
+<Accordion title="Common Customer Questions">
 
-> "We don't sell the cheapest solar - we sell the best solar. That's why our customers are so happy, and that's why they refer their neighbors to us."
+### "How long do solar panels last?"
+
+<PullQuote>"Panels are designed to produce at 80% of rated capacity after 25 years. Most installations from 20+ years ago are still producing great. They essentially last forever — they just degrade very slowly."</PullQuote>
+
+### "What happens if a panel breaks?"
+
+<PullQuote>"Covered by our 25-year warranty. We replace it at no cost. But panels are incredibly durable — tested to withstand hail, extreme wind, and temperature swings. Failures are extremely rare."</PullQuote>
+
+### "Do panels work on cloudy days?"
+
+<PullQuote>"Yes — about 25-50% of rated output compared to sunny days. San Diego has so many sunny days that even with a few cloudy ones, your annual production is excellent."</PullQuote>
+
+### "What about when it's really hot?"
+
+<PullQuote>"Solar panels are actually less efficient when very hot — counterintuitive, right? On a 110° day, maybe 10-15% less than a 75° day. But our panels have excellent temperature coefficients that minimize the loss."</PullQuote>
+
 </Accordion>

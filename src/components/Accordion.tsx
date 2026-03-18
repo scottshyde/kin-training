@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, type ReactNode } from 'react';
-import { ChevronRight } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 
 interface AccordionProps {
   title: string;
@@ -13,37 +13,69 @@ export default function Accordion({ title, children }: AccordionProps) {
 
   return (
     <div
-      className="my-4 rounded-lg overflow-hidden"
-      style={{ border: '1px solid #e5e1d8' }}
+      style={{
+        marginTop: '0.5rem',
+        borderTop: '1px solid rgba(197,162,88,0.12)',
+      }}
       suppressHydrationWarning
     >
       <button
         onClick={() => setOpen(!open)}
         type="button"
-        className="w-full flex items-center gap-3 px-5 py-4 text-left transition hover:bg-gray-50"
-        style={{ background: open ? '#FAFAF7' : 'white' }}
+        style={{
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '1.5rem 0',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          textAlign: 'left',
+          color: open ? '#FFFFFF' : 'rgba(255,255,255,0.7)',
+          transition: 'color 0.3s ease',
+        }}
       >
-        <ChevronRight
-          size={16}
-          className="text-kin-gold flex-shrink-0 transition-transform duration-200"
-          style={{ transform: open ? 'rotate(90deg)' : 'rotate(0deg)' }}
-        />
         <span
-          className="font-semibold text-kin-black text-[15px]"
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: '1.125rem',
+            fontWeight: 600,
+            letterSpacing: '-0.01em',
+            flex: 1,
+            paddingRight: '1rem',
+          }}
         >
           {title}
         </span>
+        <span
+          style={{
+            flexShrink: 0,
+            width: '28px',
+            height: '28px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: '1px solid rgba(197,162,88,0.25)',
+            borderRadius: '50%',
+            transition: 'all 0.3s ease',
+            backgroundColor: open ? 'rgba(197,162,88,0.1)' : 'transparent',
+          }}
+        >
+          {open ? (
+            <Minus size={12} style={{ color: 'rgba(197,162,88,0.7)' }} strokeWidth={1.5} />
+          ) : (
+            <Plus size={12} style={{ color: 'rgba(197,162,88,0.5)' }} strokeWidth={1.5} />
+          )}
+        </span>
       </button>
       <div
-        className="prose-kin"
+        className="prose-dark accordion-content"
         style={{
-          borderTop: open ? '1px solid #e5e1d8' : 'none',
           display: open ? 'block' : 'none',
-          padding: open ? '4px 20px 20px' : '0 20px',
-          fontSize: '14px',
-          lineHeight: '1.7',
-          color: '#374151',
+          paddingBottom: open ? '2rem' : '0',
+          paddingLeft: '0',
+          color: 'rgba(255,255,255,0.78)',
         }}
         suppressHydrationWarning
       >

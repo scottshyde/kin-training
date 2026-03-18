@@ -7,80 +7,123 @@ order: 18
 
 # Text Templates — Setter
 
-These templates are your communication layer between the door and the sit. Send them within 30 minutes of any door interaction — while the conversation is still fresh in both directions.
+<Lead>These templates are your communication layer between the door and the sit. Send them within 30 minutes of any door interaction — while the conversation is still fresh in both directions.</Lead>
 
-**Your Popl card:** https://popl.co/card/xtN92upV/9/s
-**Bill lookup:** myenergycenter.com → Billing → view detailed bill PDF
+<StatBlock stats={[
+  { value: "POPL", label: "popl.co/card/xtN92upV/9/s" },
+  { value: "BILLS", label: "myenergycenter.com → Billing → PDF" }
+]} />
 
----
+<GoldRule />
 
 <Tabs labels={["Booked", "Interested", "Confirm", "Follow-Up"]}>
 <Tab>
 <Accordion title="Booked — No Bill">
-When you've booked the appointment but couldn't pull the bill:
 
-*"Hey [Name]! It was great meeting you today. I'm confirming your appointment for [Day] at [Time] with my manager [Manager Name]. To make sure we can give you the most accurate numbers, can you log in to myenergycenter.com and grab your most recent bill? You can just screenshot the usage page and text it to me. See you [Day]!"*
+<KeyTerm term="When to Use">You've booked the appointment but couldn't pull the bill.</KeyTerm>
+
+<PullQuote>"Hey [Name]! It was great meeting you today. I'm confirming your appointment for [Day] at [Time] with my manager [Manager Name]. To make sure we can give you the most accurate numbers, can you log in to myenergycenter.com and grab your most recent bill? You can just screenshot the usage page and text it to me. See you [Day]!"</PullQuote>
+
 </Accordion>
+
 <Accordion title="Booked — With Bill">
-When you have the bill and the appointment is set:
 
-*"Hey [Name]! Great chatting with you today. Confirming your appointment for [Day] at [Time] — my manager [Manager Name] will be coming by. Everything looks good with what I pulled on your bill. See you then!"*
+<KeyTerm term="When to Use">You have the bill and the appointment is set.</KeyTerm>
+
+<PullQuote>"Hey [Name]! Great chatting with you today. Confirming your appointment for [Day] at [Time] — my manager [Manager Name] will be coming by. Everything looks good with what I pulled on your bill. See you then!"</PullQuote>
+
 </Accordion>
-<Accordion title="Booked — With Roof, No Bill">
-When roof concerns came up but they booked anyway:
 
-*"Hey [Name] — Dave from KIN Home. Great talking with you. Confirming [Day] at [Time] — [Manager Name] will be coming by and he's actually seen a lot of roof situations like yours. He'll be able to tell you right away whether it's a factor or not. See you then!"*
+<Accordion title="Booked — With Roof, No Bill">
+
+<KeyTerm term="When to Use">Roof concerns came up but they booked anyway.</KeyTerm>
+
+<PullQuote>"Hey [Name] — Dave from KIN Home. Great talking with you. Confirming [Day] at [Time] — [Manager Name] will be coming by and he's actually seen a lot of roof situations like yours. He'll be able to tell you right away whether it's a factor or not. See you then!"</PullQuote>
+
 </Accordion>
 </Tab>
+
 <Tab>
 <Accordion title="Interested — No Booking">
-When they expressed real interest but didn't commit to a time:
 
-*"Hey [Name] — Dave here from KIN Home. Really enjoyed talking with you today. I know you wanted to think about it, but I wanted to make sure you at least had the chance to see the numbers before I close out my schedule for the week. I've got [Day] at [Time] or [Day] at [Time] — either of those work?"*
+<KeyTerm term="When to Use">They expressed real interest but didn't commit to a time.</KeyTerm>
+
+<PullQuote>"Hey [Name] — Dave here from KIN Home. Really enjoyed talking with you today. I know you wanted to think about it, but I wanted to make sure you at least had the chance to see the numbers before I close out my schedule for the week. I've got [Day] at [Time] or [Day] at [Time] — either of those work?"</PullQuote>
+
 </Accordion>
-<Accordion title="Interested — Got Bill, No Booking">
-When they pulled the bill but still didn't book:
 
-*"Hey [Name] — I ran your bill numbers on the way back to my car and honestly they look really good for you. You'd be looking at roughly [estimate] a month vs what you're paying now. Worth 20 minutes with my manager to confirm that. [Day] at [Time] work?"*
+<Accordion title="Interested — Got Bill, No Booking">
+
+<KeyTerm term="When to Use">They pulled the bill but still didn't book.</KeyTerm>
+
+<PullQuote>"Hey [Name] — I ran your bill numbers on the way back to my car and honestly they look really good for you. You'd be looking at roughly [estimate] a month vs what you're paying now. Worth 20 minutes with my manager to confirm that. [Day] at [Time] work?"</PullQuote>
+
 </Accordion>
 </Tab>
+
 <Tab>
 <Accordion title="Confirm — With Bill">
-Day-before confirmation when you have bill in hand:
 
-*"Hey [Name] — just confirming you and [Manager Name] are still on for tomorrow at [Time]. Looking forward to showing you what we put together based on your usage. Text me if anything comes up!"*
+<KeyTerm term="When to Use">Day-before confirmation when you have bill in hand.</KeyTerm>
+
+<PullQuote>"Hey [Name] — just confirming you and [Manager Name] are still on for tomorrow at [Time]. Looking forward to showing you what we put together based on your usage. Text me if anything comes up!"</PullQuote>
+
 </Accordion>
+
 <Accordion title="Confirm — No Bill">
-Day-before confirmation without bill:
 
-*"Hey [Name] — confirming for tomorrow at [Time] with [Manager Name]. One thing that would help us a lot: if you have a second tonight, log into myenergycenter.com and text me a screenshot of your billing page. Makes a huge difference in the accuracy of what we show you. See you tomorrow!"*
+<KeyTerm term="When to Use">Day-before confirmation without bill.</KeyTerm>
+
+<PullQuote>"Hey [Name] — confirming for tomorrow at [Time] with [Manager Name]. One thing that would help us a lot: if you have a second tonight, log into myenergycenter.com and text me a screenshot of your billing page. Makes a huge difference in the accuracy of what we show you. See you tomorrow!"</PullQuote>
+
 </Accordion>
-<Accordion title="Edison Variant">
-For Edison customers (bill process is different):
 
-*"Hey [Name] — Dave here. Confirming your appointment for [Day] at [Time]. Since you're on Edison, if you have a chance to log into sce.com and pull up your account usage, that'll give us the most accurate numbers. If you need help, I can walk you through it — just text me. See you [Day]!"*
+<Accordion title="Edison Variant">
+
+<KeyTerm term="When to Use">For Edison customers — bill process is different.</KeyTerm>
+
+<PullQuote>"Hey [Name] — Dave here. Confirming your appointment for [Day] at [Time]. Since you're on Edison, if you have a chance to log into sce.com and pull up your account usage, that'll give us the most accurate numbers. If you need help, I can walk you through it — just text me. See you [Day]!"</PullQuote>
+
 </Accordion>
 </Tab>
+
 <Tab>
 <Accordion title="Follow-Up (No Response to First Text)">
-When they haven't responded to the confirmation:
 
-*"Hey [Name] — just want to make sure we're still on for [Day] at [Time]. No worries if something came up — just let me know and we can reschedule. [Manager Name] is looking forward to coming by."*
+<PullQuote>"Hey [Name] — just want to make sure we're still on for [Day] at [Time]. No worries if something came up — just let me know and we can reschedule. [Manager Name] is looking forward to coming by."</PullQuote>
+
 </Accordion>
-<Accordion title="Group Text — Introducing David West">
-When introducing the manager for the first time:
 
-*"[Name], meet David West — he's our North County manager and the person coming by on [Day]. I'm adding you both here so you have his number directly. David, this is [Name] — we talked today and they're at [address]. [Quick context: bill amount, main concern, etc.]"*
+<Accordion title="Group Text — Introducing Manager">
+
+<KeyTerm term="When to Use">Introducing the manager for the first time via group text.</KeyTerm>
+
+<PullQuote>"[Name], meet [Manager] — he's our [Area] manager and the person coming by on [Day]. I'm adding you both here so you have his number directly. [Manager], this is [Name] — we talked today and they're at [address]. [Quick context: bill amount, main concern, etc.]"</PullQuote>
+
 </Accordion>
 </Tab>
 </Tabs>
 
----
+<GoldRule />
 
-## Tone Notes
+<Accordion title="Tone Notes">
 
-- Use their name at the start
-- Keep it warm but not over-eager
-- Always include a specific time and the manager's name
-- Give them a reason to respond (question or CTA)
-- Sign off with your name the first time, then just your first name after
+<Steps>
+<Step number={1} title="Use Their Name at the Start">
+Personal, not automated.
+</Step>
+<Step number={2} title="Keep It Warm But Not Over-Eager">
+Confident, not desperate.
+</Step>
+<Step number={3} title="Always Include Specific Time + Manager's Name">
+Details signal professionalism.
+</Step>
+<Step number={4} title="Give Them a Reason to Respond">
+End with a question or clear CTA.
+</Step>
+<Step number={5} title="Sign Off Properly">
+Your full name the first time, then just first name after.
+</Step>
+</Steps>
+
+</Accordion>

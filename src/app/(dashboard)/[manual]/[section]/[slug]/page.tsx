@@ -155,7 +155,7 @@ export default async function ArticlePage({ params }: Props) {
           {/* Float video right if present */}
           {hasVideo && (
             <div style={{ float: 'right', marginLeft: '3rem', marginBottom: '2rem' }}>
-              <ArticleVideo src={article.frontmatter.video} />
+              <ArticleVideo src={article.frontmatter!.video} />
             </div>
           )}
 

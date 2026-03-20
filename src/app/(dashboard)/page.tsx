@@ -6,6 +6,7 @@ import { scenarios } from '@/lib/scenarios';
 import { canAccessManual } from '@/lib/roles';
 import HomeNav from '@/components/HomeNav';
 import ScenarioVideo from '@/components/ScenarioVideo';
+import GriffinHillSteps from '@/components/GriffinHillSteps';
 
 const iconMap: Record<string, React.ReactNode> = {
   DoorOpen: <DoorOpen size={32} strokeWidth={1} />,
@@ -87,6 +88,13 @@ export default async function DashboardPage() {
           <div className="mt-16 animate-bounce">
             <div style={{ width: '1px', height: '48px', background: 'linear-gradient(to bottom, transparent, rgba(197,162,88,0.5))', margin: '0 auto' }} />
           </div>
+        </div>
+      </section>
+
+      {/* ===== GRIFFIN HILL 6 STEPS ===== */}
+      <section style={{ backgroundColor: '#0D1117', paddingTop: '4rem', paddingBottom: '4rem' }} className="px-8 md:px-16">
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <GriffinHillSteps />
         </div>
       </section>
 

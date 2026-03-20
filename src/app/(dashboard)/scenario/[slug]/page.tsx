@@ -6,6 +6,15 @@ import { scenarios, getScenarioBySlug } from '@/lib/scenarios';
 import { canAccessManual } from '@/lib/roles';
 import { getArticle } from '@/lib/content';
 import HomeNav from '@/components/HomeNav';
+import GriffinHillSteps from '@/components/GriffinHillSteps';
+
+/** Which Griffin Hill steps each scenario emphasizes */
+const scenarioSteps: Record<string, string[]> = {
+  'at-the-door': ['Co', 'Na'],
+  'at-the-kitchen-table': ['Sp', 'As', 'Ci'],
+  'on-the-job': ['Ff'],
+  'building-your-empire': ['Co', 'Na', 'Sp', 'As', 'Ci', 'Ff'],
+};
 
 const iconMap: Record<string, React.ReactNode> = {
   DoorOpen: <DoorOpen size={36} strokeWidth={1} />,
@@ -96,8 +105,15 @@ export default async function ScenarioPage({ params }: Props) {
       {/* Divider */}
       <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.06)' }} className="mx-8 md:mx-16" />
 
+      {/* Griffin Hill Steps */}
+      <section style={{ paddingTop: '3rem' }} className="px-8 md:px-16">
+        <div style={{ maxWidth: '48rem' }}>
+          <GriffinHillSteps highlight={scenarioSteps[slug]} />
+        </div>
+      </section>
+
       {/* Article list */}
-      <section style={{ paddingTop: '4rem', paddingBottom: '6rem' }} className="px-8 md:px-16">
+      <section style={{ paddingTop: '1rem', paddingBottom: '6rem' }} className="px-8 md:px-16">
         <div style={{ maxWidth: '48rem' }}>
           {resolvedArticles.map((article, i) => (
             <Link

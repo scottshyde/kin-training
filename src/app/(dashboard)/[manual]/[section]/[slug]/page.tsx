@@ -11,6 +11,7 @@ import StatBlock from '@/components/StatBlock';
 import KeyTerm from '@/components/KeyTerm';
 import Steps, { Step } from '@/components/Steps';
 import GoldRule from '@/components/GoldRule';
+import BillCalculator from '@/components/BillCalculator';
 import { getManuals, getSections, getArticles, getArticle } from '@/lib/content';
 import HomeNav from '@/components/HomeNav';
 
@@ -27,6 +28,7 @@ const mdxComponents = {
   Steps,
   Step,
   GoldRule,
+  BillCalculator,
 };
 
 interface Props {
